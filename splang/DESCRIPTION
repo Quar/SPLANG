@@ -1,0 +1,28 @@
+Package: SPLANG
+Type: Package
+Title: A synthetic Poisson-lognormal-based abundance and network generative model for microbial interaction inference algorithms
+Description: 
+  A generative model to generate synthetic pairs of underlying taxa interaction
+  network and observed abundance data to develop and benchmark microbial interaction
+  inference algorithms.
+Version: 0.9.0
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+Imports:
+    dplyr (>= 1.1.3),
+    MASS (>= 7.3.60.0.1),
+    Matrix (>= 1.6.1),
+    igraph (>= 2.0.2),
+    mvtnorm (>= 1.2.4)
+Suggests: 
+    knitr,
+    rmarkdown,
+    stringr
+VignetteBuilder: knitr
+Authors@R: c(
+    person("Winchell", "Qian", role = c("aut", "cre")),
+    person("Kevin", "Stanley", role = c("aut", "fnd")),
+    person("Steven", "Siciliano", role = c("aut", "fnd"))
+  )
+License: MIT + file LICENSE

@@ -13,18 +13,48 @@ This repository contains the generator code and the analysis code for the paper 
 
 <br/>
 
+## Use SPLANG
 
-## Network Generator
+### Installation
+
+```R
+## Install devtools if needed.
+# install.packages("devtools")
+devtools::install_github(repo="Quar/SPLANG", ref="dev", subdir="splang", build_vignettes=TRUE)
+```
+
+### Quick Start Guide
+
+```R
+# After installation
+vignette('quickstart', package='SPLANG')
+```
+
+### View Docstring
+
+```R
+# After loading package
+?sample.sequencing
+```
+
+### Contribution
+
+Thank you for your interest in contributing to SPLANG! The R package is located
+under the `splang` folder.
+
+
+## Scripts Used for Analyses in the Paper
+
+### Network Generator
 
 The `./generator` folder contains scripts to generate network and observed abundance.
 
-
-## Benchmark
+### Benchmark
 
 The `./benchmark` folder contains scripts to benchmark MA, MIC, PC, PLN algorithms in parallel.
 
 
-## Analysis
+### Analysis
 
 The `./ranal` folder contains R scripts to analyze benchmark results and generate plots.
 

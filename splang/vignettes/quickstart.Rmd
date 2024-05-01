@@ -1,0 +1,100 @@
+---
+title: "SPLANG Quickstart Guide"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{SPLANG Quickstart Guide}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+SPLANG is a **s**ynthetic **P**oisson-**l**ognormal-based **a**bundance and 
+**n**etwork **g**enerative model. SPLANG extends the work from 
+(Chiquet et.al 2019) by enabling the expression of asymmetric taxa interaction
+and can generate synthetic abundance sampling data along with the underlying
+taxa interaction network. SPLANG generates pairs of abundance data and underlying
+taxa interaction network can be used to benchmark and inform the research
+and development of taxa inference algorithms.
+
+```{r setup}
+library(SPLANG)
+```
+
+## Generate Paired Synthetic Abundance Data and the Underlying Taxa Interaction Network
+
+```{r simple-example}
+sample.sequencing(
+  n.species=5,
+  n.sequencing=10,
+  sequencing.depth=100,
+  network.type = 'nm',
+  m.edges=(5 * (5 - 1) * .5) # use the floor value if not an integer
+)
+```
+
+
+## Generate in Batch
+
+To generate in batches, we can create a helper function like
+
+```{r an-example-of-a-helper-function}
+library(stringr)
+
+generate.synthetic.data = function(
+    n.species,
+    n.sequencing,
+    sequencing.depth,
+    n.sample.files,
+    dir.path,
+    fn.opath = function(n.species, n.files, i) {
+      file.path(
+        dir.path,
+        str_glue("apc-{n.species}-species-{i}-of-{n.sample.files}.Rdata")
+      )
+    },
+    ...
+) {
+  if (!dir.exists(dir.path)) {
+    dir.create(dir.path, recursive = T)
+  }
+  for (i in 1:n.sequencing) {    
+    gen.data = sample.sequencing(n.species, n.sequencing, sequencing.depth, ...)
+    save(gen.data, file=fn.opath(n.species, n.sample.files, i))
+  }
+}
+```
+
+The following code will generate batches of abundance data and the underlying
+taxa interaction network for 12, 25, 50, 100, and 200 species, each with 100
+realizations of abundance data and underlying taxa interaction network.
+
+The generated file will be stored under a folder named `gen-data` under the
+current working directory, grouped by the number of species as subdirectories.
+
+For each realization, the abundance data and the underlying taxa interaction network
+will be stored in `.Rdata` and can be loaded with `load(path_to_Rdata_file)`.
+
+```{r generate-in-batch}
+all.num.of.species = c(12, 25, 50, 100, 200)
+
+## WARNING: The following code is commented because it will generate 500 files
+## under the current working directory. Please run with caution.
+
+# for (num.species in all.num.of.species) {
+# 
+#   generate.synthetic.data(
+#     n.species = num.species,
+#     n.sequencing = 100,
+#     sequencing.depth = 30000,
+#     n.sample.files = 100,
+#     dir.path = str_glue("gen-data/data-apc-pa-{num.species}-species-30k-depth")
+#   )
+#     
+# }
+```
