@@ -20,8 +20,9 @@ Suggests:
     rmarkdown,
     stringr
 VignetteBuilder: knitr
+Maintainer: Winchell Qian <winchell.qian@usask.ca>
 Authors@R: c(
-    person("Winchell", "Qian", role = c("aut", "cre")),
+    person("Winchell", "Qian", email="winchell.qian@usask.ca", role = c("aut", "cre")),
     person("Kevin", "Stanley", role = c("aut", "fnd")),
     person("Steven", "Siciliano", role = c("aut", "fnd"))
   )

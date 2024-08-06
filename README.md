@@ -7,7 +7,7 @@ $^{2}$ University of Victoria, Computer Science, Victoria, V8W282, Canada
 $^{3}$ University of Saskatchewan, Soil Science, Saskatoon, S7N5C9, Canada  
 
 \*kevinstanley@uvic.ca  
-\+these authors contributed equally to this work  
+
 
 This repository contains the generator code and the analysis code for the paper "SPLANG: A synthetic Poisson-lognormal-based abundance and network generative model for microbial interaction inference algorithms".
 
@@ -20,7 +20,7 @@ This repository contains the generator code and the analysis code for the paper 
 ```R
 ## Install devtools if needed.
 # install.packages("devtools")
-devtools::install_github(repo="Quar/SPLANG", ref="dev", subdir="splang", build_vignettes=TRUE)
+devtools::install_github(repo="Quar/SPLANG", ref="main", subdir="splang", build_vignettes=TRUE)
 ```
 
 ### Quick Start Guide
