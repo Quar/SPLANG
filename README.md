@@ -59,3 +59,7 @@ The `./benchmark` folder contains scripts to benchmark MA, MIC, PC, PLN algorith
 The `./ranal` folder contains R scripts to analyze benchmark results and generate plots.
 
 The `./result` folder contains scripts to parse benchmark results stored in .Rdata to CSVs.
+
+## Example Workflow Using SPLANG
+
+An example workflow using SPLANG can be found under the `./workflow` folder.
